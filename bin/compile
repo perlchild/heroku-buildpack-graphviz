@@ -34,10 +34,11 @@ i() { sed 's/^/       /'; }
 
 case "$STACK" in
   cedar-14)
-    echo "Installing Graphviz version 2.36.0" | a
+    echo "Installing Graphviz version 2.38.0" | a
     echo "(Ubuntu package graphviz_2.36.0-0ubuntu3.1_amd64.deb)" | i
     # URL can be found out with: apt-cache show graphviz | grep Filename
-    url='http://archive.ubuntu.com/ubuntu/pool/main/g/graphviz/graphviz_2.36.0-0ubuntu3.1_amd64.deb' ;;
+    # url='http://archive.ubuntu.com/ubuntu/pool/main/g/graphviz/graphviz_2.38.0-5ubuntu0.1_amd64.deb' ;;
+    url='http://archive.ubuntu.com/ubuntu/pool/main/g/graphviz/graphviz_2.38.0-10_amd64.deb' ;;
   cedar)
     echo "Installing Graphviz version 2.20.2" | a
     echo "(Ubuntu package graphviz_2.20.2-8ubuntu3.2_amd64.deb)" | i
