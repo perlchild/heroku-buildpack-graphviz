@@ -32,7 +32,7 @@ set -e
 a() { sed 's/^/-----> /'; }
 i() { sed 's/^/       /'; }
 
-url='http://archive.ubuntu.com/ubuntu/pool/main/g/graphviz/graphviz_2.38.0-10build1_amd64.deb'
+url='http://mirrors.kernel.org/ubuntu/pool/main/g/graphviz/graphviz_2.38.0-12ubuntu2_amd64.deb'
 # Download package
 d=$(mktemp -dt XXXX)
 curl -s "$url" -o "$d"/pkg.deb
