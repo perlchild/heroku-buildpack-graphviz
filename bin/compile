@@ -49,6 +49,7 @@ case "$STACK" in
     exit 1 ;;
 esac
 
+echo "url is $url"
 # Download package
 d=$(mktemp -dt XXXX)
 curl -s "$url" -o "$d"/pkg.deb
