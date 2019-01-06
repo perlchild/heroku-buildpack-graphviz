@@ -48,7 +48,7 @@ mkdir -p "$1"/graphviz/bin
 mkdir -p "$1"/graphviz/lib/graphviz
 mv "$d"/usr/bin/* "$1"/graphviz/bin
 mv "$d"/usr/lib/graphviz/* "$1"/graphviz/lib/graphviz/
-mv "$d"/usr/lib/* "$1"/graphviz/lib
+mv "$d"/usr/lib/*.so "$1"/graphviz/lib
 
 # .profile.d script adding /app/graphviz/bin to PATH and setting GRAPHVIZ_DOT
 # (scripts in .profile.d are sourced at dyno startup)
