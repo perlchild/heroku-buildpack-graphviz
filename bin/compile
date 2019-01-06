@@ -41,14 +41,16 @@ d=$(mktemp -dt XXXX)
 curl -s "$url" -o "$d"/pkg.deb
 curl -s "$url2" -o "$d"/pkg2.deb
 
+pkglist=$(dpkg -L "$d"/pkg2.deb)
 # Unpack and install binaries
 dpkg -x "$d"/pkg.deb "$d"
-dpkg -x "$d"/pkg2.deb "$d"
 mkdir -p "$1"/graphviz/bin
-mkdir -p "$1"/graphviz/lib/graphviz
 mv "$d"/usr/bin/* "$1"/graphviz/bin
-mv "$d"/usr/lib/graphviz/* "$1"/graphviz/lib/graphviz/
-mv "$d"/usr/lib/*.so "$1"/graphviz/lib
+mkdir -p "$1"/graphviz/lib/graphviz
+dpkg -x "$d"/pkg2.deb "$d"
+echo $pkglist
+#mv "$d"/usr/lib/graphviz/* "$1"/graphviz/lib/graphviz/
+#mv "$d"/usr/lib/*.so "$1"/graphviz/lib
 
 # .profile.d script adding /app/graphviz/bin to PATH and setting GRAPHVIZ_DOT
 # (scripts in .profile.d are sourced at dyno startup)
