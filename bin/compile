@@ -41,7 +41,7 @@ d=$(mktemp -dt XXXX)
 curl -s "$url" -o "$d"/pkg.deb
 curl -s "$url2" -o "$d"/pkg2.deb
 
-pkglist=$(dpkg -L "$d"/pkg2.deb)
+pkglist=$(dpkg -c "$d"/pkg2.deb)
 # Unpack and install binaries
 dpkg -x "$d"/pkg.deb "$d"
 mkdir -p "$1"/graphviz/bin
