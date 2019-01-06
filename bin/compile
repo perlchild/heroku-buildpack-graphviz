@@ -45,12 +45,16 @@ curl -s "$url2" -o "$d"/pkg2.deb
 dpkg -x "$d"/pkg.deb "$d"
 dpkg -x "$d"/pkg2.deb "$d"
 mkdir -p "$1"/graphviz/bin
+mkdir -p "$1"/graphviz/lib/graphviz
 mv "$d"/usr/bin/* "$1"/graphviz/bin
+mv "$d"/usr/lib/graphviz/* "$1"/graphviz/lib/graphviz/
+mv "$d"/usr/lib/* "$1"/graphviz/lib
 
 # .profile.d script adding /app/graphviz/bin to PATH and setting GRAPHVIZ_DOT
 # (scripts in .profile.d are sourced at dyno startup)
 mkdir -p "$1"/.profile.d
 cat <<'EOF' >"$1"/.profile.d/graphviz.sh
+LD_CONFIG_PRELI
 PATH=/app/graphviz/bin:$PATH
 export GRAPHVIZ_DOT=/app/graphviz/bin
 EOF
