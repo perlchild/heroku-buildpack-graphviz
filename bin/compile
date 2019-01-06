@@ -56,10 +56,10 @@ echo $pkglist
 # (scripts in .profile.d are sourced at dyno startup)
 mkdir -p "$1"/.profile.d
 cat <<'EOF' >"$1"/.profile.d/graphviz.sh
-LD_CONFIG_PRELI
-PATH=/app/graphviz/bin:$PATH
+LD_CONFIG_PRELOAD=/app/graphviz/lib:${LD_CONFIG_PRELOAD}
+PATH=/app/graphviz/bin:${PATH}
 export GRAPHVIZ_DOT=/app/graphviz/bin
 EOF
 
-echo "Graphviz binaries and loadable libraries in /app/graphviz/bin and added to PATH" | a
+echo "Graphviz binaries and loadable libraries in /app/graphviz/bin and added to PATH and LD_CONFIG_PRELOAD" | a
 echo
